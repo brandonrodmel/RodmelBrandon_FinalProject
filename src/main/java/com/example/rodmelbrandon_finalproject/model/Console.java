@@ -8,7 +8,7 @@ public class Console extends Electronic {
     private String mColor;
     private boolean mController; // TODO: IMPLEMENT CONTROLLER VARIABLE
 
-    public Console(String name, double price, String gpu, String cpu, int ram, int storage, int quantity, boolean diskDrive, String color, int width, int length, int height) {
+    public Console(String name, double price, String gpu, String cpu, int ram, int storage, int quantity, boolean diskDrive, String color) {
         super(name, price, gpu, cpu, ram, storage);
         mDiskDrive = diskDrive;
         mColor = color;
