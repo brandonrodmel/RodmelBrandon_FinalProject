@@ -5,6 +5,7 @@ import com.example.rodmelbrandon_finalproject.model.Electronic;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +14,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 
 import java.text.NumberFormat;
 
@@ -21,8 +25,8 @@ public class MainScene extends Scene {
     public static final int WIDTH = 700;
     public static final int HEIGHT = 700;
 
-    private ImageView welcomeImage = new ImageView(new Image("welcome.png"));
-    private Label welcomeLabel = new Label("Welcome to Brandon's Electronics! How may I help you?");
+    private ImageView welcomeImage = new ImageView(new Image("electronics.png"));
+    private Label welcomeLabel = new Label("Welcome to Brandon's Electronics! How can we help?");
 
     private Button consoleButton = new Button("Browse consoles");
     private Button computerButton = new Button("Browse computers");
@@ -45,16 +49,20 @@ public class MainScene extends Scene {
         pane.setHgap(10.0);
         pane.setVgap(5);
         pane.setPadding(new Insets(5));
+        pane.setStyle("-fx-background-color: #85929E;");
 
-        welcomeImage.setFitWidth(WIDTH);
-        welcomeImage.setFitHeight(HEIGHT/4);
+        welcomeImage.setFitWidth(WIDTH-10);
+        welcomeImage.setFitHeight(HEIGHT/1.5);
         pane.add(welcomeImage, 0, 0, 3, 1);
 
         welcomeLabel.setTextFill(Color.BLACK);
+        welcomeLabel.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.REGULAR, 20));
         pane.add(welcomeLabel, 0, 1, 3, 1);
 
         pane.add(consoleButton, 0, 2);
+        consoleButton.setOnAction(event -> changeToConsoleScene());
         pane.add(computerButton, 1, 2);
+        computerButton.setOnAction(event -> changeToComputerScene());
 
         cart = controller.getAllElectronics();
         elctronicsLV.setItems(cart);
@@ -76,9 +84,7 @@ public class MainScene extends Scene {
         pane.add(checkoutLabel, 1, 5);
 
         this.setRoot(pane);
-        
-        consoleButton.setOnAction(event -> changeToConsoleScene());
-        computerButton.setOnAction(event -> changeToComputerScene());
+
     }
 
     private void checkout() {

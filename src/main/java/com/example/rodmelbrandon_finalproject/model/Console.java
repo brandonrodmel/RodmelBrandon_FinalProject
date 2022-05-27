@@ -2,11 +2,10 @@ package com.example.rodmelbrandon_finalproject.model;
 
 import java.util.Objects;
 
-public class Console extends Electronic {
+public class Console extends Electronic implements Comparable<Electronic> {
 
     private boolean mDiskDrive;
     private String mColor;
-    private boolean mController; // TODO: IMPLEMENT CONTROLLER VARIABLE
 
     public Console(String name, double price, String gpu, String cpu, int ram, int storage, int quantity, boolean diskDrive, String color) {
         super(name, price, gpu, cpu, ram, storage);
@@ -55,5 +54,14 @@ public class Console extends Electronic {
                 ", Disk Drive=" + mDiskDrive +
                 ", Color=" + mColor +
                 "]";
+    }
+
+    public int compareTo(Console o) {
+        if(super.compareTo(o) != 0)  return super.compareTo(o);
+
+        int diskDriveComp = Boolean.compare(mDiskDrive, o.mDiskDrive);
+        if(diskDriveComp != 0) return diskDriveComp;
+
+        return mColor.compareTo(o.mColor);
     }
 }

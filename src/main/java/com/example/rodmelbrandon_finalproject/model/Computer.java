@@ -2,7 +2,7 @@ package com.example.rodmelbrandon_finalproject.model;
 
 import java.util.Objects;
 
-public class Computer extends Electronic {
+public class Computer extends Electronic implements Comparable<Electronic> {
 
     private String mKeyboard;
     private String mMouse;
@@ -65,5 +65,17 @@ public class Computer extends Electronic {
                 ", Mouse=" + mMouse +
                 ", Chassis= " + mChassis +
                 "]";
+    }
+
+    public int compareTo(Computer o) {
+        if(super.compareTo(o) != 0)  return super.compareTo(o);
+
+        int keyboardComp = mKeyboard.compareTo(o.mKeyboard);
+        if(keyboardComp != 0) return keyboardComp;
+
+        int mouseComp = mMouse.compareTo(o.mMouse);
+        if(mouseComp != 0) return mouseComp;
+
+        return mChassis.compareTo(o.mChassis);
     }
 }
