@@ -10,8 +10,6 @@ public class ViewNavigator {
 
     public static void setStage(Stage stage) {
         mainStage = stage;
-        // TODO: ADD ICON
-        //mainStage.getIcons().add(new Image(""));
     }
 
     public static void loadScene(String title, Scene scene) {
